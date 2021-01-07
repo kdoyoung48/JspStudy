@@ -8,7 +8,9 @@
 <jsp:include page="../include/resource.jsp"></jsp:include>
 </head>
 <body>
-<jsp:include page="../include/navbar.jsp"></jsp:include>
+<jsp:include page="../include/navbar.jsp">
+	<jsp:param value="users" name="thisPage"/>
+</jsp:include>
 <div class="container">
 <nav>
 	<ul class="breadcrumb">

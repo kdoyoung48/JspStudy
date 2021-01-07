@@ -6,10 +6,10 @@
 		thisPage="";
 	}
 %>
-<nav class="navbar navbar-dark bg-success navbar-expand-sm">
+<nav class="navbar navbar-dark bg-success navbar-expand-sm fixed-top">
 	<div class="container">
 		<a class="navbar-brand" href="${pageContext.request.contextPath}/">
-		<img style="height:50px" src="${pageContext.request.contextPath}/images/corn.png"/>
+		<img style="height:35px" src="${pageContext.request.contextPath}/images/corn.png"/>
 		Corn</a>
 		<button class="navbar-toggler" data-toggle="collapse" data-target="#topNav">
 			<span class="navbar-toggler-icon"></span>
@@ -17,20 +17,27 @@
 		
 		<div class="collapse navbar-collapse" id="topNav">
 			<ul class="navbar-nav">
-				<li class="nav-itme" <%=thisPage.equals("users")?"active":"" %>>
+				<li class="nav-itme <%=thisPage.equals("users")?"active":"" %>">
 					<a class="nav-link" href="${pageContext.request.contextPath}/users/signup_form.jsp">회원가입</a>
 				</li>
 			</ul>
-			<ul class="navbar-nav">
-				<li class="nav-itme" <%=thisPage.equals("login")?"active":"" %>>
-					<a class="nav-link" href="${pageContext.request.contextPath}/users/loginform.jsp">로그인</a>
-				</li>
-			</ul>
-			<ul class="navbar-nav">
-				<li class="nav-itme" <%=thisPage.equals("cafe")?"active":"" %>>
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-itme <%=thisPage.equals("cafe")?"active":"" %>">
 					<a class="nav-link" href="${pageContext.request.contextPath}/cafe/list.jsp">카페 글 목록</a>
 				</li>
 			</ul>
-		</div>
+			<%
+				//로그인 된 아이디가 있는지 읽어와 본다.
+				String id=(String)session.getAttribute("id");
+			%>
+			<%if(id==null){ %>
+				<a class="btn btn-success btn-sm" href="${pageContext.request.contextPath}/users/loginform.jsp">로그인</a>
+			<%}else{ %>
+				<span class="navbar-text">
+					<a href="${pageContext.request.contextPath}/users/private/info.jsp"><%=id %></a>
+					<a class="btn btn-success btn-sm" href="${pageContext.request.contextPath}/users/logout.jsp">로그아웃</a>
+				</span>
+			<%} %>	
+		</div>				
 	</div>
 </nav>

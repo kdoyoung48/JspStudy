@@ -22,7 +22,9 @@
 <jsp:include page="../include/resource.jsp"></jsp:include>
 </head>
 <body>
-<jsp:include page="../include/navbar.jsp"></jsp:include>
+<jsp:include page="../include/navbar.jsp">
+	<jsp:param value="cafe" name="thisPage"/>
+</jsp:include>
 <div class="container">
 <nav>
 	<ul class="breadcrumb">
@@ -35,38 +37,37 @@
 		<li class="breadcrumb-item active">글 상세 내용</li>
 	</ul>
 </nav>
-	<table class="table">
-		<tr>
-			<th>글번호</th>
-			<td><%=dto.getNum() %></td>
-		</tr>
-		<tr>
-			<th>작성자</th>
-			<td><%=dto.getWriter() %></td>
-		</tr>
-		<tr>
-			<th>제목</th>
-			<td><%=dto.getTitle() %></td>
-		</tr>
-		<tr>
-			<th>조회수</th>
-			<td><%=dto.getViewCount() %></td>
-		</tr>
-		<tr>
-			<th>등록일</th>
-			<td><%=dto.getRegdate() %></td>
-		</tr>
-		<tr>		
-			<th>내용</th>
-			<td colspan="2">
-				<textarea class="form-control"><%=dto.getContent() %></textarea>
-			</td>
-		</tr>
-	</table>
-	<%
-		//session scope 에서 로그인된 아이드를 읽어와 본다. (null 일수도 있음)
-		String id=(String)session.getAttribute("id");
-	%>
+<table class="table table-bordered">
+	<tr>
+		<th>글번호</th>
+		<td><%=dto.getNum() %></td>
+	</tr>
+	<tr>
+		<th>작성자</th>
+		<td><%=dto.getWriter() %></td>
+	</tr>
+	<tr>
+		<th>제목</th>
+		<td><%=dto.getTitle() %></td>
+	</tr>
+	<tr>
+		<th>조회수</th>
+		<td><%=dto.getViewCount() %></td>
+	</tr>		
+	<tr>
+		<th>등록일</th>
+		<td><%=dto.getRegdate() %></td>
+	</tr>
+	<tr>		
+		<td colspan="2">
+			<textarea class="form-control" disabled><%=dto.getContent() %></textarea>
+		</td>
+	</tr>
+</table>		
+<%
+	//session scope 에서 로그인된 아이드를 읽어와 본다. (null 일수도 있음)
+	String id=(String)session.getAttribute("id");
+%>
 	<ul>
 		<li><a href="list.jsp">목록보기</a></li>
 		<%if(dto.getWriter().equals(id)){ %>
