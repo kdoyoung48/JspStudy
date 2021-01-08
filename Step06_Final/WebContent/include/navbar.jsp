@@ -15,12 +15,7 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		
-		<div class="collapse navbar-collapse" id="topNav">
-			<ul class="navbar-nav">
-				<li class="nav-itme <%=thisPage.equals("users")?"active":"" %>">
-					<a class="nav-link" href="${pageContext.request.contextPath}/users/signup_form.jsp">회원가입</a>
-				</li>
-			</ul>
+		<div class="collapse navbar-collapse" id="topNav">	
 			<ul class="navbar-nav">
 				<li class="nav-itme <%=thisPage.equals("cafe")?"active":"" %>">
 					<a class="nav-link" href="${pageContext.request.contextPath}/cafe/list.jsp">카페 글</a>
@@ -37,6 +32,7 @@
 			%>
 			<%if(id==null){ %>
 				<a class="btn btn-success btn-sm" href="${pageContext.request.contextPath}/users/loginform.jsp">로그인</a>
+				<a class="btn btn-warning btn-sm ml-1" href="${pageContext.request.contextPath}/users/signup_form.jsp">회원가입</a>
 			<%}else{ %>
 				<span class="navbar-text">
 					<a href="${pageContext.request.contextPath}/users/private/info.jsp"><%=id %></a>
