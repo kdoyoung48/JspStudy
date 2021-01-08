@@ -4,7 +4,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-//한 페이지에 몇개씩 표시할 것인지
+
+	String id=(String)session.getAttribute("id");
+
+	//한 페이지에 몇개씩 표시할 것인지
 	final int PAGE_ROW_COUNT=5;
 	//하단 페이지를 몇개씩 표시할 것인지
 	final int PAGE_DISPLAY_COUNT=5;
@@ -77,6 +80,7 @@
 				<th>파일명</th>
 				<th>크기</th>
 				<th>등록일</th>
+				<th>삭제</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -88,6 +92,11 @@
 				<td><a href="download.jsp?num=<%=tmp.getNum()%>"><%=tmp.getOrgFileName() %></a></td>
 				<td><%=tmp.getFileSize() %></td>
 				<td><%=tmp.getRegdate() %></td>
+				<td>
+				<%if(tmp.getWriter().equals(id)){ %>
+					<a href="private/delete.jsp?num=<%=tmp.getNum()%>">삭제</a>
+				<%} %>
+				</td>
 			</tr>
 		<%} %>
 		</tbody>

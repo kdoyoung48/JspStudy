@@ -21,6 +21,37 @@ public class FileDao {
 		}
 		return dao;
 	}
+	//파일 정보를 삭제하는 메소드
+	public boolean delete(int num) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int flag = 0;
+		try {
+			conn = new DbcpBean().getConn();
+			//실행할 insert,update,delete 문 구성
+			String sql = "DELETE FROM board_file"
+					+ " WHERE num=?";
+			pstmt = conn.prepareStatement(sql);
+			//?에 바인딩 할 내용이 있으면 바인딩한다.
+			pstmt.setInt(1, num);
+			flag = pstmt.executeUpdate();//sql문 실행하고 변화된 row 갯수 리턴하기
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+			}
+		}
+		if (flag > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	//전체 글의 갯수를 리턴하는 메소드
 	public int getCount() {
 		//글의 갯수를 담을 지역변수 
