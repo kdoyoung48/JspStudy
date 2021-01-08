@@ -32,7 +32,7 @@
 	dto.setStartRowNum(startRowNum);
 	dto.setEndRowNum(endRowNum);
 	
-	//CafeDao 객체를 이용해서 글목록을 얻어온다.
+	//FileDao 객체를 이용해서 글목록을 얻어온다.
 	List<FileDto> list=FileDao.getInstance().getList(dto);
 	
 	//하단 시작 페이지 번호 
@@ -71,7 +71,7 @@
 </nav>
 	<a href="private/upload_form.jsp">업로드 하러가기</a>
 
-	<table class="table">
+	<table class="table table-striped">
 		<thead class="table-warning">
 			<tr>
 				<th>번호</th>
@@ -94,13 +94,23 @@
 				<td><%=tmp.getRegdate() %></td>
 				<td>
 				<%if(tmp.getWriter().equals(id)){ %>
-					<a href="private/delete.jsp?num=<%=tmp.getNum()%>">삭제</a>
+					<a href="javascript:deleteConfirm(<%=tmp.getNum()%>)">삭제</a>
 				<%} %>
 				</td>
 			</tr>
 		<%} %>
 		</tbody>
 	</table>
+	
+	<script>
+		function deleteConfirm(num){
+			let isDelete=confirm(num+"번 파일을 삭제 하시겠습니까?");
+			if(isDelete){
+				location.href="private/delete.jsp?num="+num;
+			}
+		}
+	</script>
+	
 	<nav>
 		<ul class="pagination justify-content-center">
 			<%if(startPageNum != 1){ %>

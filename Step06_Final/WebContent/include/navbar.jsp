@@ -23,7 +23,7 @@
 			</ul>
 			<ul class="navbar-nav">
 				<li class="nav-itme <%=thisPage.equals("cafe")?"active":"" %>">
-					<a class="nav-link" href="${pageContext.request.contextPath}/cafe/list.jsp">카페 글 목록</a>
+					<a class="nav-link" href="${pageContext.request.contextPath}/cafe/list.jsp">카페 글</a>
 				</li>
 			</ul>
 			<ul class="navbar-nav mr-auto">
