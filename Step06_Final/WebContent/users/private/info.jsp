@@ -36,6 +36,7 @@
 	</ul>
 </nav>
 	<table class="table">
+
 		<tr>
 			<th>아이디</th>
 			<td><%=dto.getId() %></td>
