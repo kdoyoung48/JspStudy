@@ -31,3 +31,13 @@ CREATE TABLE board_file(
 );
 --
 CREATE SEQQUENCE board_file_seq;
+
+CREATE TABLE board_gallery(
+	num NUMBER PRIMARY KEY, --번호
+	writer VARCHAR2(100),
+	caption VARCHAR2(100), --설명
+	imagePath VARCHAR2(100), --저장된 파일명
+	regdate DATE
+);
+
+CREATE SEQUENCE board_gallery_seq;

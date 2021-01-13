@@ -21,9 +21,14 @@
 					<a class="nav-link" href="${pageContext.request.contextPath}/cafe/list.jsp">카페 글</a>
 				</li>
 			</ul>
-			<ul class="navbar-nav mr-auto">
+			<ul class="navbar-nav">
 				<li class="nav-itme <%=thisPage.equals("file")?"active":"" %>">
 					<a class="nav-link" href="${pageContext.request.contextPath}/file/list.jsp">자료실</a>
+				</li>
+			</ul>
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-itme <%=thisPage.equals("gallery")?"active":"" %>">
+					<a class="nav-link" href="${pageContext.request.contextPath}/gallery/list.jsp">갤러리</a>
 				</li>
 			</ul>
 			<%
