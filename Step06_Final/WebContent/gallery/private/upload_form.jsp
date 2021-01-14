@@ -10,18 +10,18 @@
 <body>
 <jsp:include page="../../include/navbar.jsp"></jsp:include>
 <div class="container">
-	<h1>이미지 업로드 폼</h1>
+		<h1>이미지 업로드 폼</h1>
 	<form action="upload.jsp" method="post" enctype="multipart/form-data">
-		<div class="form-group">
+		<div>
 			<label for="caption">설명</label>
 			<input type="text" name="caption" id="caption"/>
 		</div>
-		<div class="form-group">
+		<div>
 			<label for="image">이미지</label>
 			<input type="file" name="image" id="image"
 				accept=".jpg, .jpeg, .png, .JPG, .JPEG"/>
 		</div>
-		<button class="btn btn-success" type="submit">업로드</button>
+		<button type="submit">업로드</button>
 	</form>
 </div>
 </body>
