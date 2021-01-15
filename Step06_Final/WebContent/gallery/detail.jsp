@@ -1,6 +1,6 @@
 <%@page import="test.gallery.dao.GalleryDao"%>
 <%@page import="test.gallery.dto.GalleryDto"%>
->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -32,12 +32,12 @@
 			<a href="${pageContext.request.contextPath}/">Home</a>
 		</li>
 		<li class="breadcrumb-item">
-			<a href="${pageContext.request.contextPath}/gallery/list.jsp">글 목록</a>
+			<a href="${pageContext.request.contextPath}/gallery/list.jsp">Gallery List</a>
 		</li>
-		<li class="breadcrumb-item active">글 상세 내용</li>
+		<li class="breadcrumb-item active">Gallery Detail</li>
 	</ul>
 </nav>	
-<div class="card mb-3">	
+<div class="card mb-3 ">	
 	<div class="img-wrapper">
 			
 			<img class="card-img-top" src="${pageContext.request.contextPath}/<%=dto.getImagePath() %>" />
@@ -49,12 +49,15 @@
 		<p><small><%=dto.getNum() %></small></p>
 	</div>
 </div>
-	<%if(dto.getPrevNum()!=0){ %>
-		<a href="detail.jsp?num=<%=dto.getPrevNum()%>">이전</a>
-	<%} %>
-	<%if(dto.getNextNum()!=0){ %>
-		<a href="detail.jsp?num=<%=dto.getNextNum()%>">다음</a>
-	<%} %>	
+	
+	<div class="btn-group" role="group" aria-label="Basic example">
+	 <%if(dto.getPrevNum()!=0){ %> 
+	  	<button type="submit" class="btn btn-outline-info" onclick="location.href='detail.jsp?num=<%=dto.getPrevNum()%>'">Left</button>
+	 <%} %>
+	 <%if(dto.getNextNum()!=0){ %> 
+	  	<button type="button" class="btn btn-info" onclick="location.href='detail.jsp?num=<%=dto.getNextNum()%>'">Right</button>
+	 <%} %>	
+</div>
 </div>	
 </body>
 </html>

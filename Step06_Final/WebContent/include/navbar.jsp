@@ -6,7 +6,7 @@
 		thisPage="";
 	}
 %>
-<nav class="navbar navbar-dark bg-success navbar-expand-sm fixed-top">
+<nav class="navbar navbar-dark bg-info navbar-expand-sm fixed-top">
 	<div class="container">
 		<a class="navbar-brand" href="${pageContext.request.contextPath}/">
 		<img style="height:35px" src="${pageContext.request.contextPath}/images/corn.png"/>
@@ -36,12 +36,12 @@
 				String id=(String)session.getAttribute("id");
 			%>
 			<%if(id==null){ %>
-				<a class="btn btn-success btn-sm" href="${pageContext.request.contextPath}/users/loginform.jsp">로그인</a>
+				<a class="btn btn-info btn-sm" href="${pageContext.request.contextPath}/users/loginform.jsp">로그인</a>
 				<a class="btn btn-warning btn-sm ml-1" href="${pageContext.request.contextPath}/users/signup_form.jsp">회원가입</a>
 			<%}else{ %>
 				<span class="navbar-text">
 					<a href="${pageContext.request.contextPath}/users/private/info.jsp"><%=id %></a>
-					<a class="btn btn-success btn-sm" href="${pageContext.request.contextPath}/users/logout.jsp">로그아웃</a>
+					<a class="btn btn-info btn-sm" href="${pageContext.request.contextPath}/users/logout.jsp">로그아웃</a>
 				</span>
 			<%} %>	
 		</div>				
