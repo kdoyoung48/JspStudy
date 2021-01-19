@@ -18,18 +18,23 @@
 		<li class="breadcrumb-item active">회원가입 폼</li>
 	</ul>
 </nav>
-	<form action="signup.jsp" method="post" id="myForm">
+	<!-- 
+		[ novalidate 는 웹브라우저 자체 검증기능 사용하지 않기 ]
+		<input type="email"/> 같은 경우 웹브라우저가 직접 개입하기도 한다.
+		해당 기능을 사용하지 않기 위해서는 novalidate 를 form 에 명시해야 한다.
+	-->
+	<form action="signup.jsp" method="post" id="myForm" novalidate>
 		<div class="form-group">
 			<label for="id">아이디</label>
 			<input class="form-control" type="text" name="id" id="id"/>
-			<small class="form-text text muted">아이디는 4글자 이상 입력 해야 합니다.</small>
+			<small class="form-text text muted">영문자 소문자로 시작하고 5~20글자 이내로 입력하세요.</small>
 			<div class="invalid-feedback">사용할수 없는 아이디 입니다.</div>
 			<div class="valid-feedback">사용 가능한 아이디 입니다.</div>
 		</div>
 		<div class="form-group">
 			<label for="pwd">비밀번호</label>
 			<input class="form-control" type="password" name="pwd" id="pwd"/>
-			<small class="form-text text muted">비밀번호는 4글자 이상 입력해야 합니다.</small>
+			<small class="form-text text muted">비밀번호는 5글자~10글자 이내로 입력하세요.</small>
 			<div class="invalid-feedback">비밀번호를 확인 하세요</div>
 		</div>
 		<div class="form-group">
@@ -40,12 +45,24 @@
 		<div class="form-group">
 			<label for="email">이메일</label>
 			<input class="form-control" type="email" name="email" id="email" />
-			<small class="form-text text muted">사용 가능한 이메일 주소를 입력해 주세요</small>
+			<div class="invalid-feedback">형식에 맞는 이메일을 입력해주세요.</div>
 		</div>
-		<button class="btn btn-outline-success" type="submit">가입</button>
+		<button class="btn btn-outline-info" type="submit">가입</button>
 	</form>
 </div>
 <script>
+	//아이디를 검증할 정규 표현식
+	//영문자 소문자로 시작하고 5~20글자 이내인지 검증
+	let reg_id=/^[a-z].{4,9}$/;
+	//비밀번호를 검증할 정규 표현식
+	//5~10 글자 이내인지 검증
+	let reg_pwd=/^.{5,10}$/;
+	//[이메일을 검증할 정규 표현식] (정확히 검증하려면 javascript 이메일 정규 표현식 검색해서 사용!)
+	//@가 포함되어 있는지 검증
+	let reg_email=/@/;
+	
+
+
 	//폼에 submit 이벤트가 일어 났을때 jquery 를 활용해서 폼에 입력한 내용 검증하기
 	<%--document.querySelector("#myForm").addEventListener("submit",function(){}); --%>
 	
@@ -53,19 +70,35 @@
 	let isIdValid=false;
 	//비밀번호 유효성 여부를 관리할 변수를 만들고 초기값 부여하기
 	let isPwdValid=false;
+	//이메일 유효성 여부를 관리할 변수를 만들고 초기값 부여하기
+	let isEmailValid=false;
+	//폼 전체의 유효성 여부를 관리할 변수를 만들고 초기값 부여하기
+	let isFormValid=false;
 	
 	//id가 myForm 인 요소에 submit 이벤트가 일어 났을때 실행할 함수 등록	
 	//id가 myForm 인 요소에 submit 이벤트가 일어 났을 때 실행할 함수 등록
 	$("#myForm").on("submit",function(){
-		//만일 아이디를 제대로 입력하지 않았으면 폼 전송을 막는다.	
-		if(!isIdValid){
-			return false;
-		}
-		if(!isPwdValid){
-			return false;
+		//폼 전체의 유효성 여부를 얻어낸다.
+		isFormValid=isIdValid && isPwdValid && isEmailValid;
+		//만일 폼이 유효하지 않는다면
+		if(!isFormValid){
+			return false; ///폼 전송 막기
 		}
 	});
-	
+	//이메일을 입력했을때 실행할 함수 등록
+	$("#email").on("input",function(){
+		let inputEmail=$("#email").val();
+		//일단 모든 검증 클래스를 제거하고
+		$("#email").removeClass("is-valid is-invalid");
+		//만일 이메일이 정규표현식에 매칭되지 않는다면
+		if(!reg_email.test(inputEmail)){
+			isEmailValid=false;
+			$("#email").addClass("is-invalid");
+		}else{
+			isEmailValid=true;
+			$("#email").addClass("is-valid");
+		}
+	});
 	//id가 pwd와 pwd2
 	$("#pwd,#pwd2").on("input",function(){
 		//input 이벤트가 언제 일어나는지 확인 요망!
@@ -78,7 +111,7 @@
 		$("#pwd").removeClass("is-valid is-invalid");		
 		
 		//만일 비밀번호 4글자 이상 입력하지 않았다면
-		if(pwd.length<4){
+		if(!reg_pwd.test(pwd)){
 			//비밀번호가 유효하지 않는다고 표시하고
 			$("#pwd").addClass("is-invalid");
 			isPwdValid=false;
@@ -102,9 +135,8 @@
 		// 일단 모든 검증 클래스를 제거하고
 		$("#id").removeClass("is-valid is-invalid");
 		
-		//입력한 문자열의 길이를 얻어낸다.
-		let length=inputId.length;
-		if(length<4){
+		//입력한 문자열이 정규표현식과 매칭되는지 테스트
+		if(!reg_id.test(inputId)){//만일 매칭되지 않으면
 			//아이디가 유효하지 않다고 표시하고
 			$(id).addClass("is-invalid");
 			isIdValid=false;
