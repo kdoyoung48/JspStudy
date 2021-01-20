@@ -26,7 +26,7 @@
 		<li class="breadcrumb-item active">pic upload form</li>
 	</ul>
 </nav>
-<form action="upload.jsp" method="post" enctype="multipart/form-date">
+<form action="upload.jsp" method="post" enctype="multipart/form-data">
 	<div class="form-group">
 		<label for="caption">caption</label>
 		<input class="form-control" type="text" name="caption" id="caption" />

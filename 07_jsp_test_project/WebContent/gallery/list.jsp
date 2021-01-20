@@ -45,7 +45,7 @@
 	if(endPageNum > totalPageCount){
 		endPageNum=totalPageCount; //보정해 준다. 
 	}
-%>        
+%>          
 <!DOCTYPE html>
 <html>
 <head>
@@ -126,22 +126,23 @@
 </nav>
 	<a class="btn btn-outline-dark" id="font_bold1" href="private/upload_form.jsp">Pic upload..</a>
 	<a class="btn btn-warning" id="font_bold1" href="private/ajax_form.jsp">Pic2 upload..</a>
+	
 	<div class="row" id="galleryList">
 		<%for(GalleryDto tmp:list){ %>
-			<div class="col-6 col-md-4 col-lg-3">
-				<div class="cord mb-3">
-					<a href="detail.jsp?num=<%=tmp.getNum()%>">
-						<div class="img-wrapper">
-							<img class="card-img-top" src="${pageContext.request.contextPath}<%=tmp.getImagePath() %>"  />
-						</div>
-					</a>
-					<div class="card-body">
-						<p class="card-text"><strong><%=tmp.getCaption() %></strong></p>
-						<p class="card-text">by <%=tmp.getWriter() %></p>
-						<p><small><%=tmp.getRegdate()%></small></p>
+		<div class="col-6 col-md-4 col-lg-3">
+			<div class="card mb-3">
+				<a href="detail.jsp?num=<%=tmp.getNum()%>">
+					<div class="img-wrapper">
+						<img class="card-img-top" src="${pageContext.request.contextPath}<%=tmp.getImagePath() %>" />
 					</div>
+				</a>
+				<div class="card-body">
+					<p class="card-text"><strong><%=tmp.getCaption() %></strong></p>
+					<p class="card-text">by <%=tmp.getWriter() %></p>
+					<p><small><%=tmp.getRegdate()%></small></p>
 				</div>
 			</div>
+		</div>
 		<%} %>
 	</div>
 </div>
@@ -182,7 +183,7 @@
 					console.log(data);
 					$("#galleryList").append(data);
 					$(".back-drop").hide();
-					$(".page"+currentPage).imgLiquid();
+					$(".page-"+currentPage).imgLiquid();
 					isLoading=false;
 				}				
 			});
