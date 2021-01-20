@@ -104,7 +104,10 @@
 <style>
 	th{
 		font-family: 'Shrikhand', cursive;
-	
+	}
+	#font_bold1{
+		font-family: 'Shrikhand', cursive;
+	}
 </style>
 <body>
 <jsp:include page="../include/navbar.jsp">
@@ -119,7 +122,7 @@
 		<li class="breadcrumb-item active">file list</li>
 	</ul>
 </nav>
-<a href="private/upload_form.jsp">업로드 하러가기</a>
+<a class="btn btn-outline-warning" id="font_bold1" href="private/upload_form.jsp">New File..</a>
 <table class="table table-striped">
 	<thead class="table-warning">
 		<tr>

@@ -8,6 +8,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+	th{
+		font-family: 'Shrikhand', cursive;
+	}
+	#font_bold1{
+		font-family: 'Shrikhand', cursive;
+	}
+</style>
 <meta charset="UTF-8">
 <title>/file/list2.jsp</title>
 <jsp:include page="../include/resource.jsp"></jsp:include>
@@ -25,8 +33,8 @@
 			<li class="breadcrumb-item active">자료실 목록</li>
 		</ul>
 	</nav>
-	<a href="private/upload_form.jsp">업로드 하러가기</a>
-	<h1>자료실 목록 입니다.</h1>
+	<a class="btn btn-outline-warning" id="font_bold1" href="private/upload_form.jsp">New File..</a>
+
 	<table class="table table-striped">
 		<thead class="thead-dark">
 			<tr>

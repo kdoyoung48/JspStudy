@@ -38,8 +38,7 @@
 	</ul>
 </nav>	
 <div class="card mb-3 ">	
-	<div class="img-wrapper">
-			
+	<div class="img-wrapper">			
 			<img class="card-img-top" src="${pageContext.request.contextPath}/<%=dto.getImagePath() %>" />
 		</div>
 	<div class="card-body">	

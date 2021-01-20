@@ -85,6 +85,9 @@
 	th{
 		font-family: 'Shrikhand', cursive;
 	}
+	#font_bold1{
+		font-family: 'Shrikhand', cursive;
+	}
 	#font_bold2{
 		font-family: 'Noto Sans KR', sans-serif;
 	}
@@ -102,9 +105,9 @@
 		<li class="breadcrumb-item active">text</li>
 	</ul>
 </nav>	
-<a href="private/insertform.jsp">새글 작성</a>
+<a class="btn btn-outline-warning" id="font_bold1" href="private/insertform.jsp">New Text..</a>
 <table class="table table-striped">
-	<thead class="table-waring">
+	<thead class="table">
 		<tr>
 			<th>num</th>
 			<th>writer</th>
