@@ -422,7 +422,7 @@ public class FileDao {
 			//실행할 insert,update,delete 문 구성
 			String sql = "INSERT INTO board_file"
 					+ " (num,writer,title,orgFileName,saveFileName,fileSize,regdate)"
-					+ " VALUES(board_file.seq.NEXTVAL,?,?,?,?,?,SYSDATE)";
+					+ " VALUES(board_file_seq.NEXTVAL,?,?,?,?,?,SYSDATE)";
 			pstmt = conn.prepareStatement(sql);
 			//?에 바인딩 할 내용이 있으면 바인딩한다.
 			pstmt.setString(1, dto.getWriter());
