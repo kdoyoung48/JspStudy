@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>index.jsp</title>
+<title>/</title>
 <jsp:include page="include/resource.jsp"></jsp:include>
 <%
 	//session scope에 "id" 라는 키값으로 저장된 문자열이 있는지 읽어와 본다.

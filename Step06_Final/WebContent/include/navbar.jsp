@@ -6,7 +6,7 @@
 		thisPage="";
 	}
 %>
-<nav class="navbar navbar-dark bg-info navbar-expand-sm fixed-top">
+<nav class="navbar navbar-light bg-light navbar-expand-sm fixed-top ">
 	<div class="container">
 		<a class="navbar-brand" href="${pageContext.request.contextPath}/">
 		<img style="height:35px" src="${pageContext.request.contextPath}/images/corn.png"/>

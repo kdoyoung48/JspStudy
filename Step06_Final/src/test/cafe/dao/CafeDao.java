@@ -128,9 +128,9 @@ public class CafeDao {
 			}
 		}
 		return count;	
-	}
+	}	
 	//전체 row 의 갯수를 리턴하는 메소드
-	public int getCount() {
+		public int getCount() {
 		//글의 갯수를 담을 지역변수
 		int count=0;
 		Connection conn = null;
@@ -199,7 +199,7 @@ public class CafeDao {
 		}
 	}
 	//인자로 전달되는 글 내용을 수정 반영하는 메소드
-	public boolean update(CafeDto dto) {
+		public boolean update(CafeDto dto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		int flag = 0;
@@ -231,7 +231,7 @@ public class CafeDao {
 		} else {
 			return false;
 		}
-	}
+	}	
 	//인자로 전달되는 글 번호를 이용해서 삭제하는 메소드
 	public boolean delete(int num) {
 		Connection conn = null;
@@ -264,7 +264,7 @@ public class CafeDao {
 		}
 	}
 	//인자로 전달되는 글 번호에 해당하는 글 정보를 리턴하는 메소드
-	public CafeDto getData(int num) {
+		public CafeDto getData(int num) {
 		CafeDto dto=null;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -304,7 +304,7 @@ public class CafeDao {
 			}
 		}
 		return dto;
-	}
+	}					
 	//글 하나의 정보를 추가하는 메소드
 	public boolean insert(CafeDto dto) {
 		Connection conn = null;
@@ -499,7 +499,7 @@ public class CafeDao {
 	}
 	
 	//글 전체 목록을 리턴하는 메소드//테이블로 구성 제목만 나오니 글내용은 나중에 구성해도딤 content
-	public List<CafeDto> getList(CafeDto dto){
+		public List<CafeDto> getList(CafeDto dto){
 		//글목록
 		List<CafeDto> list=new ArrayList<CafeDto>();
 		Connection conn = null;
@@ -547,5 +547,5 @@ public class CafeDao {
 			
 		}
 		return list;
-	}
+	}							
 }

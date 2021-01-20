@@ -99,7 +99,7 @@
 			$("#email").addClass("is-valid");
 		}
 	});
-	//id가 pwd와 pwd2
+	// id 가 pwd 와  pwd2 인 요소에 input(입력) 이벤트가 일어 났을때 실행할 함수 등록
 	$("#pwd,#pwd2").on("input",function(){
 		//input 이벤트가 언제 일어나는지 확인 요망!
 		//console.log("input!!");

@@ -10,7 +10,7 @@
 	int num=Integer.parseInt(request.getParameter("num"));
 	// 2. DB에서 해당 파일의 정보를 읽어온다.
 	FileDto dto=FileDao.getInstance().getData(num);
-	
+
 	//만일 로그인된 아이디와 글 작성자가 다르면 에러를 응답한다.
 	String id=(String)session.getAttribute("id");
 	if(!dto.getWriter().equals(id)){
